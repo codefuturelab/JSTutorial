@@ -152,3 +152,64 @@ console.log( arr.includes(NaN) );// true (correct)
 
   )
   console.log([11,2,22,1].sort((a, b) => a - b));
+
+  console.clear();
+  arr = ['Bilbo', 'Gandalf', 'Nazgul'];
+  let strJoin = arr.join(';');
+  console.log(strJoin);
+
+  /// reduce 
+  /*
+  let value = arr.reduce(function(accumulator, item, index, array) {
+  // ...
+}, [initial]);
+*/
+  arr = [1, 2, 3, 4, 5];
+  let result = arr.reduce((sum, current) => sum + current,-10);
+  console.log(result);
+  arr = [];
+  result = arr.reduce((sum, current) => sum + current,0); // if the array is empty it needs initial value
+  console.log(result);
+
+console.log(typeof []);
+console.log(Array.isArray([]));
+
+let army = {
+  minAge: 18,
+  maxAge: 27,
+  canJoin(user) {
+    return user.age >= this.minAge && user.age < this.maxAge;
+  }
+};
+
+let usersSolders = [
+  {age: 16},
+  {age: 20},
+  {age: 23},
+  {age: 30}
+];
+
+// find users, for who army.canJoin returns true
+let soldiers = usersSolders.filter(army.canJoin, army);
+// let soldiers = userSolders.filter( user => army.canJoin(user));
+
+console.log(soldiers.length); // 2
+console.log(soldiers[0].age); // 20
+console.log(soldiers[1].age); // 23
+
+let arrLike = {
+  0: "Hello",
+  1: "World",
+  length: 2
+};
+ arr = Array.from(arrLike);
+ console.log(arr);
+ 
+ str = 'abc';
+
+let chars = []; // Array.from internally does the same loop
+for (let char of str) {
+  chars.push(char);
+}
+console.log(chars);
+
